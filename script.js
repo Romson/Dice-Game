@@ -2,18 +2,12 @@
 
 var activePlayer, scores, roundScore, currentRoll, buttonRoll, buttonHold, buttonNewGame;
 
-
-
-// activePlayer    = document.getElementById("name-");
-currentRoll     = document.getElementById("current-");
 buttonRoll      = document.querySelector(".btn-roll");
 buttonHold      = document.querySelector(".btn-hold");
 buttonNewGame   = document.querySelector(".btn-new");
 scores          = [0, 0];
 roundScore      = 0;
 activePlayer    = 0;
-
-start();
 
 function start(){
     document.getElementById("score-0").textContent = "0";
@@ -23,6 +17,18 @@ function start(){
     document.querySelector(".dice").style.display = "none";
     activePlayer    = 0;
 }
+
+function switchPlayer(){
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    roundScore = 0;
+    document.getElementById("current-0").textContent = "0";
+    document.getElementById("current-1").textContent = "0";
+    document.querySelector(".player-0-panel").classList.toggle("active");
+    document.querySelector(".player-1-panel").classList.toggle("active");
+    document.querySelector(".dice").style.display = "none";
+}
+
+start();
 
 buttonRoll.addEventListener("click", function(){
     // Random number
@@ -36,22 +42,12 @@ buttonRoll.addEventListener("click", function(){
         roundScore += diceRoll;
         document.getElementById("current-" + activePlayer).textContent = roundScore;
     } else{
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-        roundScore = 0;
-        document.getElementById("current-0").textContent = "0";
-        document.getElementById("current-1").textContent = "0";
-        document.querySelector(".player-0-panel").classList.toggle("active");
-        document.querySelector(".player-1-panel").classList.toggle("active");
+        switchPlayer();    
     }
 });
 
 buttonHold.addEventListener("click", function(){
-    scores[activePlayer] += roundScore;    
+    scores[activePlayer] += roundScore;  
     document.getElementById("score-" + activePlayer).textContent = scores[activePlayer];
-    document.getElementById("current-" + activePlayer).textContent = "0";
-    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-    roundScore = 0;
-    document.querySelector(".player-0-panel").classList.toggle("active");
-    document.querySelector(".player-1-panel").classList.toggle("active");
-    
+    switchPlayer();
 });
