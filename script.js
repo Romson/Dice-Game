@@ -44,3 +44,14 @@ buttonRoll.addEventListener("click", function(){
         document.querySelector(".player-1-panel").classList.toggle("active");
     }
 });
+
+buttonHold.addEventListener("click", function(){
+    scores[activePlayer] += roundScore;    
+    document.getElementById("score-" + activePlayer).textContent = scores[activePlayer];
+    document.getElementById("current-" + activePlayer).textContent = "0";
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    roundScore = 0;
+    document.querySelector(".player-0-panel").classList.toggle("active");
+    document.querySelector(".player-1-panel").classList.toggle("active");
+    
+});
