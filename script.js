@@ -47,7 +47,22 @@ buttonRoll.addEventListener("click", function(){
 });
 
 buttonHold.addEventListener("click", function(){
-    scores[activePlayer] += roundScore;  
+    // Add score to activePlayer
+    scores[activePlayer] += roundScore;
+
+    // Update score activePlayer
     document.getElementById("score-" + activePlayer).textContent = scores[activePlayer];
+
+    // Check if game won
+    // scores[activePlayer] >= 100 ? document.getElementById("name-" + activePlayer).textContent = "Winner!";
+    if(scores[activePlayer] >= 20){
+        document.getElementById("name-" + activePlayer).textContent = "Winner!";
+    } else {
+        // Hold score / next player turn
+        switchPlayer();
+    }
+});
+
+buttonNewGame.addEventListener("click", function(){
     switchPlayer();
 });
