@@ -21,7 +21,7 @@
     clear: both;
 }
 
-.active {
+.active, .winner {
     background-color: #f7f7f7;
 }
 
@@ -86,14 +86,17 @@
 
 .btn-new {
     top: 45px;
+    outline: none;
 }
 
 .btn-roll {
     top: 403px;
+    outline: none;
 }
 
 .btn-hold {
     top: 467px;
+    outline: none;
 }
 
 button:hover {
