@@ -1,10 +1,13 @@
 // new game start set scores to 0
 
-var activePlayer, scores, roundScore, buttonRoll, buttonHold, buttonNewGame;
+var activePlayer, scores, roundScore, buttonRoll, buttonHold, buttonNewGame, initWinScore, playingTo, winningScore;
 
+buttonNewGame   = document.querySelector(".btn-new");
 buttonRoll      = document.querySelector(".btn-roll");
 buttonHold      = document.querySelector(".btn-hold");
-buttonNewGame   = document.querySelector(".btn-new");
+winningScore    = document.querySelector("input[type='number']");
+playingTo       = document.querySelector(".winScoreValue");
+initWinScore    = 100;
 
 function start(){
     document.getElementById("score-0").textContent = "0";
@@ -24,6 +27,12 @@ function start(){
     activePlayer    = 0;
 }
 
+// function newWinningScore(){
+//     playingTo.textContent = winningScore.value;
+//     initWinScore = Number(winningScore.value);
+//     start();
+// }
+
 function switchPlayer(){
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
     roundScore = 0;
@@ -35,6 +44,8 @@ function switchPlayer(){
 }
 
 start();
+
+buttonNewGame.addEventListener("click", start);
 
 buttonRoll.addEventListener("click", function(){
     // Random number
@@ -61,7 +72,7 @@ buttonHold.addEventListener("click", function(){
     document.getElementById("score-" + activePlayer).textContent = scores[activePlayer];
 
     // Check if game won
-    if(scores[activePlayer] >= 20){
+    if(scores[activePlayer] >= initWinScore){
         document.getElementById("name-" + activePlayer).textContent = "Winner!";
         document.querySelector(".dice").style.display = "none";
         document.querySelector(".player-" + activePlayer + "-panel").classList.remove("active");
@@ -73,4 +84,8 @@ buttonHold.addEventListener("click", function(){
     }
 });
 
-buttonNewGame.addEventListener("click", start);
+winningScore.addEventListener("change", function(){
+    playingTo.textContent = winningScore.value;
+    initWinScore = Number(winningScore.value);
+    start();
+});

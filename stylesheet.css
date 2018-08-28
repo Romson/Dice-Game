@@ -1,3 +1,7 @@
+body {
+    background-image: url('images/back.jpg');
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -103,7 +107,24 @@ button:hover {
     font-weight: 600;
 }
 
-button {
+#winScore {
+    top: 320px;    
+    text-align: center;
+}
+
+input {
+    top: 510px;
+    border: solid 2px #EB4D4D !important;
+    background-color: #EB4D4D;
+    color: #fff;
+    width: 40%;
+    margin: 0 auto;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px !important;
+}
+
+button, input, #winScore {
     position: absolute;
     width: 200px;
     left: 50%;
