@@ -1,6 +1,6 @@
 // new game start set scores to 0
 
-var activePlayer, scores, roundScore, buttonRoll, buttonHold, buttonNewGame, initWinScore, playingTo, winningScore, gameStart;
+var activePlayer, scores, roundScore, buttonRoll, buttonHold, buttonNewGame, initWinScore, playingTo, winningScore, gameStart, lastRoll;
 
 buttonNewGame   = document.querySelector(".btn-new");
 buttonRoll      = document.querySelector(".btn-roll");
@@ -58,12 +58,16 @@ buttonRoll.addEventListener("click", function(){
         diceDOM.src = "images/dice-" + diceRoll + ".png";
         console.log(diceRoll);
         // Update current score
-        if(diceRoll !== 1){
+        if(diceRoll === 6 && lastRoll === 6){
+            scores[activePlayer] = 0;
+            document.getElementById("score-" + activePlayer).textContent = 0;
+            switchPlayer();
+        } else if(diceRoll !== 1){
             roundScore += diceRoll;
             document.getElementById("current-" + activePlayer).textContent = roundScore;
         } else{
             switchPlayer();    
-        }
+        } lastRoll = diceRoll;
     }
 });
 
