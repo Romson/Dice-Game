@@ -113,18 +113,24 @@ button:hover {
 }
 
 input {
-    top: 510px;
-    border: solid 2px #EB4D4D !important;
-    background-color: #EB4D4D;
-    color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 520px;
+    outline: none;
+    color: #555;
     width: 40%;
     margin: 0 auto;
     padding: 12px;
     text-align: center;
-    font-size: 14px !important;
+    font-size: 18px !important;
+    font-family: 'Lato';
+    text-align: center;
+    padding: 10px;
+    width: 200px;
 }
 
-button, input, #winScore {
+button, #winScore {
     position: absolute;
     width: 200px;
     left: 50%;
